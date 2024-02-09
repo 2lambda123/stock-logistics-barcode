@@ -13,6 +13,8 @@ from odoo.tools.safe_eval import safe_eval
 from odoo.tools.translate import _
 from odoo.tools.convert import convert_file
 import logging
+import lxml.etree
+
 logger = logging.getLogger('init:stock_scanner')
 
 
@@ -46,7 +48,7 @@ def import_scenario(env, module, scenario_xml, mode, directory, filename):
     ir_model_data_obj = env['ir.model.data']
 
     xml_doc = StringIO(scenario_xml)
-    root = parse(xml_doc).getroot()
+    root = parse(xml_doc, parser=lxml.etree.XMLParser(resolve_entities=False)).getroot()
 
     steps = []
     transitions = []
