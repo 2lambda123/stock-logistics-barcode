@@ -40,8 +40,6 @@ def get_xml_id(element, module, values):
 
 
 def import_scenario(env, module, scenario_xml, mode, directory, filename):
-    """"""
-    
     model_obj = env['ir.model']
     company_obj = env['res.company']
     warehouse_obj = env['stock.warehouse']
@@ -215,26 +213,6 @@ def import_scenario(env, module, scenario_xml, mode, directory, filename):
 def scenario_convert_file(cr, module, filename, idref,
                           mode='update', noupdate=False,
                           kind=None, report=None, pathname=None):
-    """Converts a file into a scenario and imports it into the database.
-    Parameters:
-        - cr (odoo.api.Environment): Database cursor.
-        - module (str): Name of the module.
-        - filename (str): Name of the file to be converted.
-        - idref (str): ID of the record to be updated.
-        - mode (str): Mode of the conversion process. Default is 'update'.
-        - noupdate (bool): If True, no records will be updated. Default is False.
-        - kind (str): Type of conversion. Default is None.
-        - report (str): Name of the report to be generated. Default is None.
-        - pathname (str): Path of the file to be converted. Default is None.
-    Returns:
-        - None: No return value.
-    Processing Logic:
-        - Sets the default pathname if not provided.
-        - Gets the directory and filename from the pathname.
-        - Gets the extension of the filename.
-        - If the extension is '.scenario', opens the file and imports the scenario into the database.
-        - If the extension is not '.scenario', converts the file into the specified type and updates the record in the database."""
-    
     if pathname is None:
         pathname = os.path.join(module, filename)
 
